@@ -9,41 +9,34 @@ Install dependencies
 composer install
 ```
 
-Configure a shell alias that allows you to execute Sail's commands more easily:
+Start docker containers and serve the app at localhost
 ```bash
-alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
-```
-
-
-
-
-Start docker containers
-```bash
-sail up -d
+./vendor/bin/sail up -d
 ```
 Run migrations
 ```bash
-sail artisan migrate --seed
+./vendor/bin/sail artisan migrate:fresh --seed
 ```
+## Consume Queue
 
-
-## Running the app
-
-Serving App
 ```bash
-sail artisan octane:start
+./vendor/bin/sail artisan queue:work
 ```
 
 ## Tests
 
 ```bash
-sail artisan test
+./vendor/bin/sail artisan migrate:fresh --seed --env=testing
+```
+
+```bash
+./vendor/bin/sail artisan test
 ```
 
 ## Stress Test
 
 ```bash
-sail ./vendor/bin/pest stress http://localhost/api/jobs --post='{\"title\": \"Nuno\", \"tasks\": [\"summary\"]}'
+./vendor/bin/pest stress http://localhost/api/jobs --post='{\"title\": \"Nuno\", \"tasks\": [\"summary\"]}'
 ```
 I get this results after launching the command
 
