@@ -1,14 +1,19 @@
 <?php
 
-namespace App\Actions;
+namespace App\AppJobTasks\Actions;
 
-use App\Models\AppJob;
-use App\Http\Resources\AppJobResource;
+use App\AppJobTasks\Models\AppJob;
 use Lorisleiva\Actions\Concerns\AsAction;
+use App\AppJobTasks\Application\AppJobService;
+use App\AppJobTasks\Http\Resources\AppJobResource;
 
 class GetAppJobAction
 {
     use AsAction;
+
+    public function __construct(private AppJobService $appJobService)
+    {
+    }
 
     public function handle(AppJob $appJob): AppJobResource
     {
@@ -17,7 +22,7 @@ class GetAppJobAction
 
     public function asController(string $uuid): AppJobResource
     {
-        $data = AppJob::where('uuid', $uuid)->firstOrFail();
+        $data = $this->appJobService->getAppJobByUuid($uuid);
 
         return $this->handle($data);
     }

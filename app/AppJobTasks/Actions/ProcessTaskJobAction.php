@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\AppJobTasks\Actions;
 
 use Log;
 use Lorisleiva\Actions\Concerns\AsAction;

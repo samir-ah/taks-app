@@ -1,16 +1,21 @@
 <?php
 
-namespace App\Actions;
+namespace App\AppJobTasks\Actions;
 
-use App\TaskEnum;
+use App\AppJobTasks\TaskEnum;
 use Illuminate\Validation\Rule;
-use App\Actions\ProcessTaskJobAction;
+use App\AppJobTasks\Actions\ProcessTaskJobAction;
+use App\AppJobTasks\Application\AppJobService;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class CreateAppJobAction
 {
     use AsAction;
+    
+    public function __construct(private AppJobService $appJobService)
+    {
+    }
 
     public function rules(): array
     {
@@ -23,15 +28,8 @@ class CreateAppJobAction
 
     public function handle(array $data): array
     {
-        $job = \App\Models\AppJob::create([
-            'uuid' => (string) \Illuminate\Support\Str::uuid(),
-            'title' => $data['text'],
-        ]);
-
-        foreach ($data['tasks'] as $task) {
-            // Enqueue each task for processing.
-            ProcessTaskJobAction::dispatch($task, $job->uuid);
-        }
+        $job = $this->appJobService->createAppJob($data['text']);
+        $this->appJobService->processTasks($data['tasks'], $job);
 
         return ['jobId' => $job->uuid];
     }
