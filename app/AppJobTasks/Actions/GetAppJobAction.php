@@ -2,7 +2,7 @@
 
 namespace App\AppJobTasks\Actions;
 
-use App\AppJobTasks\Models\AppJob;
+use App\Models\AppJob;
 use Lorisleiva\Actions\Concerns\AsAction;
 use App\AppJobTasks\Application\AppJobService;
 use App\AppJobTasks\Http\Resources\AppJobResource;

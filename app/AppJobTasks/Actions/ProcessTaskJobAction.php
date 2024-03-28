@@ -12,7 +12,7 @@ class ProcessTaskJobAction
     public function handle(string $task, string $jobId): void
     {
         // Mock processing of the task.
-        Log::info("Processing task [{$task}] for job [{$jobId}]...");   
+        Log::info("Processing task [{$task}] for job [{$jobId}]");   
     }
 
     public function asJob(string $task, string $jobId): void

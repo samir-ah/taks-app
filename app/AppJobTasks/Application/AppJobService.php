@@ -2,7 +2,7 @@
 
 namespace App\AppJobTasks\Application;
 
-use App\AppJobTasks\Models\AppJob;
+use App\Models\AppJob;
 use App\AppJobTasks\Actions\ProcessTaskJobAction;
 use App\AppJobTasks\Infrastructure\AppJobRepository;
 

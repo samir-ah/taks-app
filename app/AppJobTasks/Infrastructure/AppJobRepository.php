@@ -2,7 +2,7 @@
 
 namespace App\AppJobTasks\Infrastructure;
 
-use App\AppJobTasks\Models\AppJob;
+use App\Models\AppJob;
 
 class AppJobRepository
 {

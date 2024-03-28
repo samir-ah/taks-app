@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
+        "laravel/octane": "^2.3",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "lorisleiva/laravel-actions": "^2.8"
@@ -20,6 +21,7 @@
         "nunomaduro/collision": "^8.0",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-laravel": "^2.3",
+        "pestphp/pest-plugin-stressless": "^2.2",
         "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
