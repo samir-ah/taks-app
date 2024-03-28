@@ -9,7 +9,8 @@ Install dependencies
 composer install
 ```
 
-Start docker containers and serve the app at localhost
+Start Docker containers and serve the app at localhost.
+
 ```bash
 ./vendor/bin/sail up -d
 ```
@@ -38,7 +39,7 @@ Run migrations
 ```bash
 ./vendor/bin/pest stress http://localhost/api/jobs --post='{\"title\": \"Nuno\", \"tasks\": [\"summary\"]}'
 ```
-I get this results after launching the command
+I get these results after launching the command.
 
 | Metric                      | Value               |
 |-----------------------------|---------------------|
